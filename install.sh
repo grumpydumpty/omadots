@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO="https://github.com/omacom-io/omadots.git"
+#REPO="https://github.com/omacom-io/omadots.git"
+REPO="https://github.com/grumpydumpty/omadots.git"
 TMPDIR="$(mktemp -d)"
 trap 'rm -rf "$TMPDIR"' EXIT
 
@@ -10,7 +11,8 @@ section() {
 }
 
 section "Cloning Omadots..."
-git clone --depth 1 "$REPO" "$TMPDIR"
+#git clone --depth 1 "$REPO" "$TMPDIR"
+git clone -b docker --single-branch --depth 1 "$REPO" "$TMPDIR"
 
 section "Installing LazyVim..."
 rm -rf ~/.config/nvim
