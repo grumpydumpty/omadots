@@ -31,6 +31,9 @@ alias lzd='lazydocker'
 alias r='rails'
 alias v='vim'
 alias t='tmux attach || tmux new -s Work'
+alias ic='tdl c'
+alias ix='tdl cx'
+alias icx='tdl c cx'
 n() { if [[ $# -eq 0 ]]; then nvim .; else nvim "$@"; fi; }
 
 # Git
