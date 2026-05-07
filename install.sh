@@ -28,14 +28,26 @@ section "Configuring shell..."
 case "$(basename "$SHELL")" in
 zsh)
   cat >"$HOME/.zshrc" <<'EOF'
-source ~/.config/shell/all
+# If not running interactively, don't do anything (leave this at the top of this file)
+[[ $- != *i* ]] && return
+
+# Load zsh options, keybindings, and completion
 source ~/.config/shell/zoptions
+
+# Load shared shell configuration (aliases, functions, environment, tool init)
+source ~/.config/shell/all
 EOF
   echo '. ~/.zshrc' >"$HOME/.zprofile"
   echo "✓ Zsh"
   ;;
 bash)
-  echo 'source ~/.config/shell/all' >"$HOME/.bashrc"
+  cat >"$HOME/.bashrc" <<'EOF'
+# If not running interactively, don't do anything (leave this at the top of this file)
+[[ $- != *i* ]] && return
+
+# Load bash options, keybindings, and completion
+source ~/.config/shell/all
+EOF
   echo '. ~/.bashrc' >"$HOME/.bash_profile"
   ln -snf "$HOME/.config/shell/inputrc" "$HOME/.inputrc"
   echo "✓ Bash"
