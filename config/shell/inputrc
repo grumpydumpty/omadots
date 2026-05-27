@@ -1,3 +1,7 @@
+set meta-flag on
+set input-meta on
+set output-meta on
+set convert-meta off
 set completion-ignore-case on
 set completion-prefix-display-length 2
 set show-all-if-ambiguous on
@@ -33,3 +37,11 @@ set skip-completed-text on
 
 # Coloring for Bash 4 tab completions.
 set colored-stats on
+
+# Cycle forward and backward through completion candidates (tab/shift+tab)
+# (completion listing and display behavior configured above)
+TAB: menu-complete
+"\e[Z": menu-complete-backward
+
+# On first Tab, complete the common prefix before cycling candidates
+set menu-complete-display-prefix on
